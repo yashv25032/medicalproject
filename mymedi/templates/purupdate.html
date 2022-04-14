@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-sm-8 offset-2 shadow-lg mt-3">
+    <h1 class=" text-center rounded" style="color:whitesmoke ; background-color: cornflowerblue;">Purchase Update</h1>
+<div class="bg-white">
+   <form action="" method="post">
+       {% csrf_token %}
+
+       {% for pur in sys %}
+       <div class="form-group">
+          <b> {{pur.label_tag}} {{pur}} {{pur.error}}</b>
+       </div>
+       {% endfor %}
+       <br>
+       
+<div>
+   
+       <button class="submit btn btn-primary ">update</button>
+     
+
+
+</div>
+   </form>
+</div>
+</div>
+
+{% endblock content %}

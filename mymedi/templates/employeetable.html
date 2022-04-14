@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+
+
+
+{% block content %}
+
+<div class="col-sm-9 offset-2 shadow-lg mt-3">
+    
+    <h1 class=" text-center rounded" style="color:whitesmoke ; background-color: cornflowerblue;">Employee Details</h1>
+    <div>
+        <table class="table table-bordered border-dark table-secondary ">
+
+            <thead>
+                <tr>
+                    <th scope="col">Sr no.</th>
+                    <th scope="col">Emp_id</th>
+                    <th scope="col">First name </th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Phone no.</th>
+                    <th scope="col">Delete Record</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for y in rm %}
+                <tr>
+                    <th scope="row"><a href="{% url 'empupdate' y.id %} ">{{forloop.counter}}</a> </th>
+                    <td>{{y.empid}}</td>
+                    <td>{{y.fname}}</td>
+                    <td>{{y.lname}}</td>
+                    <td>{{y.address}}</td>
+                    <td>{{y.email}}</td>
+                    <td>{{y.salary}}</td>
+                    <td>{{y.phn_no}}</td>
+                    <td>
+                       
+
+                            <form action="{% url 'empdel' y.id %}" method="post">
+                              {% csrf_token %}
+                              <input type="submit" class="btn btn-danger my-1 " value="Delete">
+                            </form>
+                          
+                    </td>
+                </tr>
+                {% endfor %}
+
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

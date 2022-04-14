@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<div class="col-sm-9 offset-2 shadow-lg mt-3">
+    <h1 class=" text-center rounded" style="color:whitesmoke ; background-color: cornflowerblue;">Medicine Details</h1>
+    <div>
+        <table class="table table-bordered border-dark table-secondary ">
+
+            <thead>
+                <tr>
+                    <th scope="col">Sr no.</th>
+                    <th scope="col">med_id</th>
+                    <th scope="col">Medicine name </th>
+                    <th scope="col">Dealer name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for m in ri %}
+                <tr>
+                    <th scope="row"><a href="{% url 'medupdate' m.id %} ">{{forloop.counter}}</a> </th>
+                    <td>{{m.m_id}}</td>
+                    <td>{{m.mname}}</td>
+                    <td>{{m.dname}}</td>
+                    <td>{{m.desc}}</td>
+                    <td>{{m.price}}</td>
+                    <td>{{m.stock}}</td>
+                    <td>
+                        <form action="{% url 'meddel' m.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-danger my-1 " value="Delete">
+                          </form>                        
+                    </td>
+                </tr>
+                {% endfor %}
+
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

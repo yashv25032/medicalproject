@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+
+<div class="col-sm-9 offset-2 shadow-lg mt-3">
+  <h1 class=" text-center rounded" style="color:whitesmoke ; background-color: cornflowerblue;">Customer Details</h1>
+<div>
+  <table class="table table-bordered border-dark table-secondary ">
+      
+          <thead>
+            <tr>
+              <th scope="col">Sr.no</th>
+              <th scope="col">First name </th>
+              <th scope="col">Last name</th>
+              <th scope="col">Address</th>
+              <th scope="col">Phone no.</th>
+              <th scope="col">Email</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for z in di %}
+            <tr>
+              <th scope="row"><a href="{% url 'custtable' z.id %}">{{forloop.counter}}</a> </th>
+              <td>{{z.fname}}</td>
+              <td>{{z.lname}}</td>
+              <td>{{z.address}}</td>
+              <td>{{z.phn_no}}</td>
+              <td>{{z.email}}</td>
+              <td>
+                <form action="{% url 'cusdel' z.id %}" method="post">
+                  {% csrf_token %}
+                  <input type="submit" class="btn btn-danger my-1 " value="Delete">
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+            
+            
+          </tbody>
+       
+    </table>
+</div>
+</div>
+
+
+
+{% endblock content %}
+

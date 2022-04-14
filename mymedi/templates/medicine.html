@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+ {% load static %} 
+
+
+  {% block content %}
+  <div class="row">
+  <div class="col-sm-8 offset-2 mt-3 shadow-lg" style="background-color: azure;" >
+    <div class="  m-2">
+      <h1 class="text-center bg-secondary m-2 rounded-2">Medcine details</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+      
+       <b> {{md.as_p}}</b>
+
+        <input class="text-center btn btn-primary"  type="submit" value="submit">
+    </form>
+    </div>
+  </div>
+</div>
+
+  {% endblock content %} 
+   
